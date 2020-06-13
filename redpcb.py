@@ -7,17 +7,17 @@ from gerber.render.cairo_backend import GerberCairoContext
 
 ## Load All Layers
 #Top View Layers
-copper = load_layer('./copper.GTL')
-soldermask = load_layer('./soldermask.GTS')
-legend = load_layer('./silkscreen.GTO')
-drill = load_layer('./ncdrill.DRD')
+copper = load_layer('gerber_files/copper.GTL')
+soldermask = load_layer('gerber_files/soldermask.GTS')
+legend = load_layer('gerber_files/silkscreen.GTO')
+drill = load_layer('gerber_files/ncdrill.DRD')
 
 #Bottom View Layers
-copper_btm = load_layer('./bottom_copper.GBL')
-soldermask_btm = load_layer('./bottom_mask.GBS')
+copper_btm = load_layer('gerber_files/bottom_copper.GBL')
+soldermask_btm = load_layer('gerber_files/bottom_mask.GBS')
 
 ## Color Settings
-mask_settings = RenderSettings(color=theme.COLORS['red soldermask'], alpha=0.8, invert=True)
+mask_settings = RenderSettings(color=theme.COLORS['red soldermask'], alpha=0.5, invert=True)
 legend_settings = RenderSettings(color=theme.COLORS['white'], alpha=0.8)
 
 ## Rendering 
@@ -28,13 +28,13 @@ cont.render_layer(soldermask, settings=mask_settings)
 cont.render_layer(legend, settings=legend_settings)
 cont.render_layer(drill)
 
-cont.dump('./redpcb.png')
+cont.dump('gen_images/redpcb.png')
 
 #Clear cont
 cont.clear()
 
 #Bottom View
 cont.render_layer(copper_btm)
-cont.render_layer(soldermask_btm)
+cont.render_layer(soldermask_btm, settings=mask_settings)
 
-cont.dump('./redpcb_bottom.png')
+cont.dump('gen_images/redpcb_bottom.png')
