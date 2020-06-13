@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import os
 from gerber import load_layer
 from gerber.render import RenderSettings, theme
