@@ -4,6 +4,10 @@ Required: <br>
 - Gerber (pip3 install gerber) <br>
 <br>
 To execute, either run: <br>
+```
 python3 redpcb.py<br>
-or<br>
+```
+Or run<br>
+```
 ./redpcb.py
+```
